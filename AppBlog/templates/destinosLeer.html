@@ -1,0 +1,22 @@
+{% extends 'single.html' %}
+
+{% load static %}
+
+{% block titulo_cambia %} destinosLeer {% endblock %}
+
+{% block contenido %} 
+
+<body>
+
+    <h1>LEER</h1>
+    <ul>
+        {% for destinos in destinos %} 
+             <li>{{ destinos.titulo }} - {{ destinos.subtitulo }} - {{ destinos.lugar }} - {{ destinos.provincia }} - {{ destinos.imagen }}</li>
+        {% endfor %}
+    
+    </ul> 
+
+
+</body>
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'single.html' %}
+
+{% load static %}
+
+{% block titulo_cambia %} destinoForm {% endblock %}
+
+{% block contenido %} 
+
+<body>
+
+    <h1>FORMULARIO</h1>
+
+    <form action="{% url 'destinosForm' %}" method="POST"> {% csrf_token %} 
+    
+    <table>
+        {{ form.as_table }}
+    
+    </table>
+    
+    <input type="submit" value="Cargar Destino">
+    
+    
+    </form>    
+</body>
+
+{% endblock %}
