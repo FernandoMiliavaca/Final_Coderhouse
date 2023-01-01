@@ -16,7 +16,7 @@ def destinos(request):
 
 def destinosFormulario(request):
     if request.method == 'POST':
-        form = DestinosFormulario(request.POST)
+        form = DestinosFormulario(request.POST, files=request.FILES)
         print(form)
 
         if form.is_valid():
@@ -31,6 +31,7 @@ def destinosFormulario(request):
             cuerpo=informacion['cuerpo']
             autor=informacion['autor']
             imagen=informacion['imagen']
+            #tituloimagen=informacion['tituloimagen']
 
             destino_nuevo = Destino (titulo=titulo, subtitulo=subtitulo, lugar=lugar, provincia=provincia, fecha=fecha, cuerpo=cuerpo, autor=autor, imagen=imagen)
             destino_nuevo.save()

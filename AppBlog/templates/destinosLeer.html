@@ -11,7 +11,8 @@
     <h1>LEER</h1>
     <ul>
         {% for destinos in destinos %} 
-             <li>{{ destinos.titulo }} - {{ destinos.subtitulo }} - {{ destinos.lugar }} - {{ destinos.provincia }} - {{ destinos.imagen }}</li>
+             <li>{{ destinos.titulo }} - {{ destinos.subtitulo }} - {{ destinos.lugar }} - {{ destinos.provincia }}</li>
+             <img src="{{ destinos.imagen.url }}" class="img-fluid">
         {% endfor %}
     
     </ul> 
