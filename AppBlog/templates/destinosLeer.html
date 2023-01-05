@@ -6,18 +6,14 @@
 
 {% block contenido %} 
 
-<body>
+<ul>
+{% for destinos in destinos %} 
+<li>{{ destinos.titulo }} - {{ destinos.subtitulo }} - {{ destinos.lugar }} - {{ destinos.provincia }}</li>
+<img src="{{ destinos.imagen.url }}" class="img-fluid">
+<a class="btn btn-danger" href="{% url 'destinosEliminar' destinos.id %}" >Borrar</a>
+<a class="btn btn-success" href="{% url 'destinosEditar' destinos.id %}" >Editar</a>    
 
-    <h1>LEER</h1>
-    <ul>
-        {% for destinos in destinos %} 
-             <li>{{ destinos.titulo }} - {{ destinos.subtitulo }} - {{ destinos.lugar }} - {{ destinos.provincia }}</li>
-             <img src="{{ destinos.imagen.url }}" class="img-fluid">
-        {% endfor %}
-    
-    </ul> 
-
-
-</body>
+{% endfor %}
+</ul>    
 
 {% endblock %}

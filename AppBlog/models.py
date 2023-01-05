@@ -10,8 +10,8 @@ class Destino(models.Model):
     fecha = models.DateField()
     cuerpo = models.TextField()
     autor = models.CharField(max_length=30)
-    imagen = models.ImageField(null=False)
-    #tiuloimagen = models.CharField(max_length=200)
+    imagen = models.ImageField(upload_to='media', null=True)
+    tiuloimagen = models.CharField(max_length=200)
 
     def __str__(self):
-        return self.titulo+ ' - ' + self.subtitulo + ' - ' +self.lugar+ ' - '+self.provincia+ ' - ' + str(self.fecha) + ' - ' + self.autor + self.imagen.name
+        return self.titulo+ ' - ' + self.subtitulo + ' - ' +self.lugar+ ' - '+self.provincia+ ' - ' + str(self.fecha) + ' - ' + self.autor + ' - ' + self.imagen.name + ' - ' + self.tiuloimagen

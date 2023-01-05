@@ -1,0 +1,26 @@
+{% extends 'single.html' %}
+
+{% load static %}
+
+{% block titulo_cambia %} destinoForm {% endblock %}
+
+{% block contenido %} 
+
+<body>
+
+    <h1>FORMULARIO</h1>
+
+    <form action="{% url 'destinosEditar' destinos.id %}" method="POST" enctype="multipart/form-data"> {% csrf_token %} 
+    
+    <table>
+        {{ form.as_table }}
+    </table>
+    
+    
+    <input type="submit" value="Actualizar Destino">
+    
+    
+    </form>    
+</body>
+
+{% endblock %}

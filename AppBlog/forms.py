@@ -9,5 +9,5 @@ class DestinosFormulario(forms.Form):
     fecha = forms.DateField()
     cuerpo = forms.CharField(max_length=200)
     autor = forms.CharField(max_length=30)
-    imagen = forms.ImageField()
-    #tituloimagen = forms.CharField(max_length=200)
+    imagen = forms.ImageField(label='imagen')
+    tituloimagen = forms.CharField(max_length=200)
