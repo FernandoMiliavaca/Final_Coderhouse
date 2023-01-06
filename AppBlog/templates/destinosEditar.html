@@ -8,9 +8,9 @@
 
 <body>
 
-    <h1>FORMULARIO</h1>
+    <h1>Editar Blog</h1>
 
-    <form action="{% url 'destinosEditar' destinos.id %}" method="POST" enctype="multipart/form-data"> {% csrf_token %} 
+    <form action="{% url 'destinosEditar' destinos.id %}" method="POST" > {% csrf_token %} 
     
     <table>
         {{ form.as_table }}

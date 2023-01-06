@@ -6,8 +6,7 @@ class DestinosFormulario(forms.Form):
     subtitulo = forms.CharField(max_length= 50)
     lugar = forms.CharField(max_length= 30)
     provincia = forms.CharField(max_length= 30)
-    fecha = forms.DateField()
     cuerpo = forms.CharField(max_length=200)
     autor = forms.CharField(max_length=30)
     imagen = forms.ImageField(label='imagen')
-    tituloimagen = forms.CharField(max_length=200)
+    

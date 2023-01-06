@@ -31,13 +31,12 @@ def destinosFormulario(request):
             subtitulo=informacion['subtitulo']
             lugar=informacion['lugar']
             provincia=informacion['provincia']
-            fecha=informacion['fecha']
             cuerpo=informacion['cuerpo']
             autor=informacion['autor']
             imagen=imagen=request.FILES['imagen']
-            tituloimagen=informacion['tituloimagen']
+                        
 
-            destino_nuevo = Destino (titulo=titulo, subtitulo=subtitulo, lugar=lugar, provincia=provincia, fecha=fecha, cuerpo=cuerpo, autor=autor, imagen=imagen, tituloimagen=tituloimagen)
+            destino_nuevo = Destino (titulo=titulo, subtitulo=subtitulo, lugar=lugar, provincia=provincia, fecha=fecha, cuerpo=cuerpo, autor=autor, imagen=imagen)
             destino_nuevo.save()
 
             return render(request, 'inicio.html')
@@ -52,7 +51,7 @@ def destinosFormulario(request):
 #----------------Leer Destinos------------------
 
 def destinosLeer(request):
-    destinos = Destino.objects.all()
+    destinos = Destino.objects.all().order_by('-fecha')
     
     return render (request, 'destinosLeer.html', {'destinos':destinos})
 
@@ -70,19 +69,20 @@ def destinosEditar(request, id):
             destinos.subtitulo=informacion['subtitulo']
             destinos.lugar=informacion['lugar']
             destinos.provincia=informacion['provincia']
-            destinos.fecha=informacion['fecha']
             destinos.cuerpo=informacion['cuerpo']
             destinos.autor=informacion['autor']
-            destinos.imagen=destinos.imagen=request.FILES['imagen']
-            destinos.tiuloimagen=informacion['tituloimagen']
+            destinos.imagen=informacion['imagen']
             destinos.save()
             destinos=Destino.objects.all()
             return render(request, 'destinosLeer.html', {'mensaje':'Destino editado correctamente'})
 
     else:
-        formu=DestinosFormulario(initial={'titulo':destinos.titulo, 'subtitulo':destinos.subtitulo, 'lugar':destinos.lugar, 'provincia':destinos.provincia, 'fecha':destinos.fecha, 'cuerpo':destinos.cuerpo, 'autor':destinos.autor, 'imagen':destinos.imagen, 'tituloimagen':destinos.tiuloimagen})
+        formu=DestinosFormulario(initial={'titulo':destinos.titulo, 'subtitulo':destinos.subtitulo, 'lugar':destinos.lugar, 'provincia':destinos.provincia, 'fecha':destinos.fecha, 'cuerpo':destinos.cuerpo, 'autor':destinos.autor, 'imagen':destinos.imagen})
 
     return render (request, 'destinosEditar.html', {'form':formu, 'destinos':destinos})
+
+
+
 #---------------Borrar Destinos-----------------
 
 def destinosEliminar(request, id):
