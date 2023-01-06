@@ -57,10 +57,11 @@ def destinosLeer(request):
 
 
 
-#-------------Acutalizar Destinos---------------
+#---------------Editar Destinos-----------------
 
 def destinosEditar(request, id):
     destinos=Destino.objects.get(id=id)
+    
     if request.method == 'POST':
         form = destinosFormulario(request.POST)
         if form.is_valid():

@@ -14,7 +14,7 @@
     {{ destinos.provincia }} - 
     {{ destinos.fecha }} - 
     {{ destinos.cuerpo }} - 
-    {{ destinos. autor }} </li>
+    {{ destinos.autor }} </li>
 <img src="{{ destinos.imagen.url }}" class="img-fluid">
 <a class="btn btn-danger" href="{% url 'destinosEliminar' destinos.id %}" >Borrar</a>
 <a class="btn btn-success" href="{% url 'destinosEditar' destinos.id %}" >Editar</a>    
