@@ -1,10 +1,14 @@
 from django.urls import path
 from Accounts.views import *
+from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
 
-path('dashboard/', dashboard, name='dashboard'),
-path('cuentas/', cuentas, name='cuentas'),
-path('cuentasFormulario/', cuentasFormulario, name='cuentasFormulario'),
+path('index/', index, name='index'),
+path('login', login_request, name='login'),
+path('register/', register, name='register'),
+path('logout/', LogoutView.as_view(), name='logout'),
+
+
 
 ]

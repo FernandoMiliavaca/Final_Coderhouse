@@ -1,0 +1,32 @@
+{% extends 'inicio.html' %} 
+
+{% load static %} 
+
+{% block titulo_cambia %} Inicia Sesión {% endblock %} 
+
+
+{% block contenido_cambia %} 
+
+<body>
+
+    <h1>Iniciar Sesión</h1>
+
+    <form action="{% url 'login' %}" method="POST" enctype="multipart/form-data"> {% csrf_token %} 
+    
+    <table>
+        {{ form.as_table }}
+    </table>
+    
+    
+    <input type="submit" value="Iniciar Sesión">
+    
+    
+    </form>    
+
+    {{ mensaje }}
+
+    <button onclick="location.href='{% url 'inicio' %}'">Ir a Inicio</button>
+    <button onclick="location.href='{% url 'register' %}'">Registrate</button>
+</body>
+
+{% endblock %}

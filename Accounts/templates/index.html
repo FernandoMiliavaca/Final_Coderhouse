@@ -1,0 +1,20 @@
+{% extends "Accounts/index_copy.html" %}
+    {% load static %}
+    
+        
+    <form action="{% url 'AppBlog/destinosEditar' destinos.id %}" method="POST" > {% csrf_token %} 
+    
+        <table>
+            {{ form.as_table }}
+        </table>
+        
+        
+        <input type="submit" value="Actualizar Destino">
+        
+        
+        </form>    
+
+
+   
+</body>
+</html>

@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .models import Destino
 from AppBlog.forms import DestinosFormulario
-
+from django.contrib.auth.decorators import login_required
 # --- Inicio: 
 
 def inicio(request):
@@ -18,6 +18,7 @@ def destinos(request):
 
 #----------------Crear Destinos------------------
 
+@login_required
 def destinosFormulario(request):
     if request.method == 'POST':
         form = DestinosFormulario(request.POST, files=request.FILES)
@@ -32,11 +33,12 @@ def destinosFormulario(request):
             lugar=informacion['lugar']
             provincia=informacion['provincia']
             cuerpo=informacion['cuerpo']
+            fecha=informacion['fecha']
             autor=informacion['autor']
             imagen=imagen=request.FILES['imagen']
                         
 
-            destino_nuevo = Destino (titulo=titulo, subtitulo=subtitulo, lugar=lugar, provincia=provincia, fecha=fecha, cuerpo=cuerpo, autor=autor, imagen=imagen)
+            destino_nuevo = Destino (titulo=titulo, subtitulo=subtitulo, lugar=lugar, provincia=provincia, cuerpo=cuerpo, fecha=fecha, autor=autor, imagen=imagen)
             destino_nuevo.save()
 
             return render(request, 'inicio.html')
@@ -70,6 +72,7 @@ def destinosEditar(request, id):
             destinos.subtitulo=informacion['subtitulo']
             destinos.lugar=informacion['lugar']
             destinos.provincia=informacion['provincia']
+            destinos.fecha=informacion['fecha']
             destinos.cuerpo=informacion['cuerpo']
             destinos.autor=informacion['autor']
             destinos.imagen=informacion['imagen']
@@ -85,7 +88,7 @@ def destinosEditar(request, id):
 
 
 #---------------Borrar Destinos-----------------
-
+    
 def destinosEliminar(request, id):
     destinos = Destino.objects.get(id=id)
     destinos.delete()
@@ -103,9 +106,4 @@ def nosotros(request):
 
 
 
-#------------------------------------------------
-#-------------------Contacto---------------------
-#------------------------------------------------
-def contacto(request):
-    return render(request, 'contacto.html')
 

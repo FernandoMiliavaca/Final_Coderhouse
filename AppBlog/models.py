@@ -8,8 +8,8 @@ class Destino(models.Model):
     subtitulo = models.CharField(max_length= 50)
     lugar = models.CharField(max_length= 30)
     provincia = models.CharField(max_length= 30)
-    fecha = models.DateTimeField(auto_now=True)
-    cuerpo = models.TextField()
+    fecha = models.DateTimeField()
+    cuerpo = models.CharField(max_length=5000)
     autor = models.CharField(max_length=30)
     imagen = models.ImageField(upload_to='media', null=True)
 

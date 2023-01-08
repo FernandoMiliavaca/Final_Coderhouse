@@ -2,13 +2,13 @@
 
 {% load static %}
 
-{% block titulo_cambia %} destinoForm {% endblock %}
+{% block titulo_cambia %} Carga un nuevo Destino {% endblock %}
 
 {% block contenido %} 
 
 <body>
 
-    <h1>FORMULARIO</h1>
+    <h1>Formulario  </h1>
 
     <form action="{% url 'destinosForm' %}" method="POST" enctype="multipart/form-data"> {% csrf_token %} 
     

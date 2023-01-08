@@ -1,23 +1,27 @@
-{% extends 'single.html' %}
+{% extends 'inicio.html' %}
 
 {% load static %}
 
 {% block titulo_cambia %} destinosLeer {% endblock %}
 
-{% block contenido %} 
+{% block contenido_general %} 
 
 <ul>
 {% for destinos in destinos %} 
-<li>{{ destinos.titulo }} - 
-    {{ destinos.subtitulo }} - 
-    {{ destinos.lugar }} - 
-    {{ destinos.provincia }} - 
-    {{ destinos.fecha }} - 
-    {{ destinos.cuerpo }} - 
-    {{ destinos.autor }} </li>
+<li><h3>{{ destinos.titulo }}</h3> 
+    <h4>{{ destinos.subtitulo }}</h4>
+    <h4><span>{{ destinos.lugar }} - {{ destinos.provincia }}</span></h4> 
+    <p>{{ destinos.cuerpo }}</p>
+    <h5><b>Por: {{ destinos.autor }} - {{ destinos.fecha }}</b></h5> </li>
 <img src="{{ destinos.imagen.url }}" class="img-fluid">
+
+
 <a class="btn btn-danger" href="{% url 'destinosEliminar' destinos.id %}" >Borrar</a>
-<a class="btn btn-success" href="{% url 'destinosEditar' destinos.id %}" >Editar</a>    
+<a class="btn btn-success" href="{% url 'destinosEditar' destinos.id %}" >Editar</a> 
+<a class="btn btn-success" href="{% url 'destinosForm' destinos.id %}" >Nuevo Destino</a> 
+
+ 
+
 
 {% endfor %}
 </ul>    
